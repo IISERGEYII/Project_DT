@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1kdyl2weuca3"]
+
+[ext_resource type="Script" uid="uid://bepp6kw7rbop" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://vsudsabywiuh" path="res://information.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://dyw400cx44cm8" path="res://logic.gd" id="3_lquwl"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
+
+[node name="Information" type="Node" parent="."]
+script = ExtResource("2_1bvp3")
+
+[node name="Logic" type="Node" parent="."]
+script = ExtResource("3_lquwl")
+
+[node name="Condition" type="Node" parent="."]
+
+[node name="Object" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Main_Container" type="VBoxContainer" parent="Object"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 645.0
+offset_bottom = 432.0
+grow_horizontal = 2
+pivot_offset = Vector2(1, 2)
+
+[node name="Main_text" type="RichTextLabel" parent="Object/Main_Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+bbcode_enabled = true
+
+[node name="Button_Container" type="VBoxContainer" parent="Object/Main_Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
