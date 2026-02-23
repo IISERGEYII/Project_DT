@@ -5,6 +5,8 @@ extends Node2D
 var information = Information.new()
 
 func _ready() -> void:
-	information.loading_information("res://stages.json")
 	var logic = Logic.new(information, main_text, button_container)
+	logic.loading_stages("res://stages.json")
+	logic.loading_notes("res://notes.json")
+	main_text.meta_clicked.connect(logic._on_text_meta_cliked)
 	logic.set_stage("stage0")

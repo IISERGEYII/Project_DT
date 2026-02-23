@@ -13,8 +13,6 @@ script = ExtResource("2_1bvp3")
 [node name="Logic" type="Node" parent="."]
 script = ExtResource("3_lquwl")
 
-[node name="Condition" type="Node" parent="."]
-
 [node name="Object" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
