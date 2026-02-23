@@ -1,6 +1,10 @@
 {
 	"first_note" : {
 		"text_note" : "ДА",
-		"id_condictions" : []
+		"id_conditions" : []
+	},
+	"test_note" : {
+		"text_note": "НЕТ",
+		"id_conditions": ["test_condition"]
 	}
 }

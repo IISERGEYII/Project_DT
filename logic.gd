@@ -7,7 +7,7 @@ var main_text: RichTextLabel
 var button_container: VBoxContainer
 
 var now_stage = ""
-var now_actions_stage = []
+var now_actions_stages = []
 
 func _init(info, main_text, button_container):
 	self.info = info
@@ -16,17 +16,24 @@ func _init(info, main_text, button_container):
 
 func set_stage(stage_id):
 	now_stage = stage_id
-	now_actions_stage = info.stages[now_stage].actions_stage
+	now_actions_stages = info.stages[now_stage].actions_stage
 	main_text.bbcode_text = info.stages[now_stage].main_text
 	if button_container.get_child_count() != 0:
 		clear_buttons()
-	for i in range(0, now_actions_stage.size()):
+	for action_stage in now_actions_stages:
 		var flag = true
-		for condition in now_actions_stage[i].conditions:
-			if condition == "":
-				break
+		if action_stage.conditions[0] == "":
+			pass
+		else:
+			for condition in action_stage.conditions:
+				print(condition)
+				if info.conditions[condition].active:
+					continue
+				else:
+					flag = false
+					break
 		if flag:
-			create_button(now_actions_stage[i].button_text, now_actions_stage[i].id_stage)
+			create_button(action_stage.button_text, action_stage.id_stage)
 
 func create_button(button_text, id_stage):
 	var btn = Button.new()
@@ -68,7 +75,16 @@ func loading_notes(fale_name):
 	for note in json_info:
 		info.notes[note] = info.Note.new(
 			json_info[note]["text_note"],
-			json_info[note]["id_condictions"]
+			json_info[note]["id_conditions"]
+		)
+
+func loading_conditions(fale_name):
+	var file = FileAccess.open(fale_name, FileAccess.READ)
+	var json_info = JSON.parse_string(file.get_as_text())
+	file.close()
+	for condition in json_info:
+		info.conditions[condition] = info.Condition.new(
+			json_info[condition]["id_notes"]
 		)
 
 func _on_text_meta_cliked(click_note):
@@ -76,3 +92,16 @@ func _on_text_meta_cliked(click_note):
 		pass
 	else:
 		info.notes[click_note].active = true
+		for condition in info.notes[click_note].id_conditions:
+			checking_conditions(condition)
+
+func checking_conditions(id_condiction):
+	var flag = true
+	for note in info.conditions[id_condiction].id_notes:
+		if info.notes[note].active:
+			continue
+		else:
+			flag = false
+			break
+	if flag:
+		info.conditions[id_condiction].active = true

@@ -4,7 +4,10 @@ class_name Information
 
 class Condition:
 	var active = false
-	var id_note: Array
+	var id_notes: Array
+	
+	func _init(id_notes):
+		self.id_notes = id_notes
 
 class Action:
 	var button_text: String
@@ -21,9 +24,9 @@ class Note:
 	var active = false
 	var id_conditions: Array
 	
-	func _init(text_note, id_condictions) -> void:
+	func _init(text_note, id_conditions) -> void:
 		self.text_note = text_note
-		self.id_conditions = id_condictions
+		self.id_conditions = id_conditions
 
 	func set_active():
 		self.active = true
@@ -38,3 +41,4 @@ class Stage:
 
 var stages = {}
 var notes = {}
+var conditions = {}

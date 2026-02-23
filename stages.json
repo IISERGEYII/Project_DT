@@ -7,15 +7,21 @@
 	},
 	"stage0.1": {
 		"main_text": "Вы ничего не нашли",
+		"button_text": ["1. На начальный экран", "2. Внедрить вирус"],
+		"id_stage": ["stage0", "stage0.1.2"],
+		"conditions": [[""], ["test_condition"]]
+	},
+	"stage0.1.2": {
+		"main_text": "Вы прошли игру",
 		"button_text": ["1. На начальный экран"],
 		"id_stage": ["stage0"],
-		"conditions": [[""], [""], [""]]
+		"conditions": [[""]]
 	},
 	"stage0.2": {
-		"main_text": "Начальный экран в [url='first_note']где_то[/url]",
-		"button_text": ["1. На начальный экран", "2. ", "3. Пойти в магазин"],
-		"id_stage": ["stage0.1", "stage0.2", "stage0.3"],
-		"conditions": [[""], [""], [""]]
+		"main_text": "Вы нашли [url='test_note']очень важную инфу[/url]",
+		"button_text": ["1. На начальный экран"],
+		"id_stage": ["stage0"],
+		"conditions": [[""]]
 	},
 	"stage0.3": {
 		"main_text": "Начальный экран в [url='first_note']где_то[/url]",
