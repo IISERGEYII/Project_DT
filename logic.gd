@@ -5,16 +5,22 @@ class_name Logic
 var info: Information
 var main_text: RichTextLabel
 var button_container: VBoxContainer
+var times_label: Label
+var final_label: Label
+var overall_time = 200
 
 var now_stage = ""
 var now_actions_stages = []
 
-func _init(info, main_text, button_container):
+func _init(info, main_text, button_container, times_label, final_label):
 	self.info = info
 	self.main_text = main_text
 	self.button_container = button_container
+	self.times_label = times_label
+	self.final_label = final_label
 
 func set_stage(stage_id):
+	times_label.text = str(overall_time)
 	now_stage = stage_id
 	now_actions_stages = info.stages[now_stage].actions_stage
 	main_text.bbcode_text = info.stages[now_stage].main_text
@@ -26,24 +32,32 @@ func set_stage(stage_id):
 			pass
 		else:
 			for condition in action_stage.conditions:
-				print(condition)
 				if info.conditions[condition].active:
 					continue
 				else:
 					flag = false
 					break
 		if flag:
-			create_button(action_stage.button_text, action_stage.id_stage)
+			create_button(action_stage.button_text, action_stage.id_stage, action_stage.takes_time)
 
-func create_button(button_text, id_stage):
+func create_button(button_text, id_stage, takes_time):
 	var btn = Button.new()
 	btn.text = button_text
 	btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	btn.pressed.connect(_on_button_pressed.bind(id_stage))
+	btn.pressed.connect(_on_button_pressed.bind(id_stage, takes_time))
 	button_container.add_child(btn)
 
-func _on_button_pressed(next_stage):
+func _on_button_pressed(next_stage, takes_time):
+	overall_time -= takes_time
+	if overall_time <= 0:
+		defeat()
 	set_stage(next_stage)
+
+func defeat():
+	main_text.visible = false
+	button_container.visible = false
+	times_label.visible = false
+	final_label.visible = true
 
 func clear_buttons():
 	for button in button_container.get_children():
@@ -65,7 +79,8 @@ func loading_actions(json_info, stage) -> Array:
 		actions_stage.append(info.Action.new(
 			json_info[stage]["button_text"][i],
 			json_info[stage]["id_stage"][i],
-			json_info[stage]["conditions"][i]))
+			json_info[stage]["conditions"][i],
+			json_info[stage]["takes_time"][i]))
 	return actions_stage
 
 func loading_notes(fale_name):

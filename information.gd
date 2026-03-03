@@ -13,11 +13,13 @@ class Action:
 	var button_text: String
 	var id_stage: String
 	var conditions: Array
+	var takes_time: int
 	
-	func _init(button_text, id_stage, conditions):
+	func _init(button_text, id_stage, conditions, takes_time):
 		self.button_text = button_text
 		self.id_stage = id_stage
 		self.conditions = conditions
+		self.takes_time = takes_time
 
 class Note:
 	var text_note: String

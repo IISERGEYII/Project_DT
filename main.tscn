@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1kdyl2weuca3"]
+[gd_scene load_steps=5 format=3 uid="uid://b1kdyl2weuca3"]
 
 [ext_resource type="Script" uid="uid://bepp6kw7rbop" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://vsudsabywiuh" path="res://information.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dyw400cx44cm8" path="res://logic.gd" id="3_lquwl"]
+
+[sub_resource type="GDScript" id="GDScript_h2yge"]
+script/source = "extends Control
+class_name Ui_Object
+@onready var main_text = %Main_text
+@onready var button_container = %Button_Container
+@onready var list_NAC = %List_Notes_And"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -13,30 +20,58 @@ script = ExtResource("2_1bvp3")
 [node name="Logic" type="Node" parent="."]
 script = ExtResource("3_lquwl")
 
-[node name="Object" type="Control" parent="."]
+[node name="UI_Object" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = SubResource("GDScript_h2yge")
 
-[node name="Main_Container" type="VBoxContainer" parent="Object"]
+[node name="Main_Container" type="VBoxContainer" parent="UI_Object"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 1.0
+offset_left = 2.0
 offset_top = 1.0
-offset_right = 645.0
-offset_bottom = 432.0
+offset_right = 856.0
+offset_bottom = 647.0
 grow_horizontal = 2
 pivot_offset = Vector2(1, 2)
 
-[node name="Main_text" type="RichTextLabel" parent="Object/Main_Container"]
+[node name="Main_text" type="RichTextLabel" parent="UI_Object/Main_Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 bbcode_enabled = true
 
-[node name="Button_Container" type="VBoxContainer" parent="Object/Main_Container"]
+[node name="Button_Container" type="VBoxContainer" parent="UI_Object/Main_Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="List_Notes_And_Condictions" type="ItemList" parent="UI_Object"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 858.0
+offset_top = 239.0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Final_Label" type="Label" parent="UI_Object"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+text = "Потраченно"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Times_Label" type="Label" parent="UI_Object"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1107.0
+offset_right = 1152.0
+offset_bottom = 26.0
+horizontal_alignment = 1
+vertical_alignment = 1
