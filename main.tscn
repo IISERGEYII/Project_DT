@@ -61,6 +61,7 @@ vertical_alignment = 1
 
 [node name="Times_Label" type="Label" parent="UI_Object"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 1107.0
 offset_right = 1152.0
@@ -76,6 +77,9 @@ offset_left = 834.0
 offset_top = 277.0
 offset_right = 1065.0
 offset_bottom = 534.0
+auto_width = true
+auto_height = true
+text_overrun_behavior = 0
 
 [node name="ButtonNote" type="Button" parent="UI_Object"]
 unique_name_in_owner = true
