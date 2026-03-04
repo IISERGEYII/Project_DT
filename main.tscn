@@ -67,3 +67,33 @@ offset_right = 1152.0
 offset_bottom = 26.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ListNotesCondition" type="ItemList" parent="UI_Object"]
+visible = false
+layout_mode = 0
+offset_left = 1029.0
+offset_top = 363.0
+offset_right = 1145.0
+offset_bottom = 460.0
+
+[node name="Button_Note" type="Button" parent="UI_Object"]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 493.0
+offset_right = 909.0
+offset_bottom = 531.0
+
+[node name="Button_Condition" type="Button" parent="UI_Object"]
+layout_mode = 0
+offset_left = 1026.0
+offset_top = 543.0
+offset_right = 1051.0
+offset_bottom = 568.0
+
+[node name="Button_Return" type="Button" parent="UI_Object"]
+visible = false
+layout_mode = 0
+offset_left = 911.0
+offset_top = 597.0
+offset_right = 940.0
+offset_bottom = 628.0
