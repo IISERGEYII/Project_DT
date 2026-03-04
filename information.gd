@@ -5,9 +5,11 @@ class_name Information
 class Condition:
 	var active = false
 	var id_notes: Array
+	var text: String
 	
-	func _init(id_notes):
+	func _init(id_notes, text):
 		self.id_notes = id_notes
+		self.text = text
 
 class Action:
 	var button_text: String

@@ -7,17 +7,28 @@ var main_text: RichTextLabel
 var button_container: VBoxContainer
 var times_label: Label
 var final_label: Label
-var overall_time = 200
+var list_notes_condition: ItemList
+var button_notes: Button
+var button_condition: Button
+var button_return: Button
 
+var overall_time = 200
 var now_stage = ""
 var now_actions_stages = []
+var active_notes_texts = []
+var active_conditions_texts = []
 
-func _init(info, main_text, button_container, times_label, final_label):
+func _init(info, main_text, button_container, times_label, final_label,
+ list_notes_condition, button_notes, button_condition, button_return):
 	self.info = info
 	self.main_text = main_text
 	self.button_container = button_container
 	self.times_label = times_label
 	self.final_label = final_label
+	self.list_notes_condition = list_notes_condition
+	self.button_notes = button_notes
+	self.button_condition = button_condition
+	self.button_return = button_return
 
 func set_stage(stage_id):
 	times_label.text = str(overall_time)
@@ -99,7 +110,8 @@ func loading_conditions(fale_name):
 	file.close()
 	for condition in json_info:
 		info.conditions[condition] = info.Condition.new(
-			json_info[condition]["id_notes"]
+			json_info[condition]["id_notes"],
+			json_info[condition]["text_codition"]
 		)
 
 func _on_text_meta_cliked(click_note):
@@ -107,6 +119,7 @@ func _on_text_meta_cliked(click_note):
 		pass
 	else:
 		info.notes[click_note].active = true
+		active_notes_texts.append(info.notes[click_note].text_note)
 		for condition in info.notes[click_note].id_conditions:
 			checking_conditions(condition)
 
@@ -120,3 +133,27 @@ func checking_conditions(id_condiction):
 			break
 	if flag:
 		info.conditions[id_condiction].active = true
+		active_conditions_texts.append(info.conditions[id_condiction].text)
+		
+func _on_button_notes_pressed():
+	button_notes.visible = false
+	button_condition.visible = false
+	list_notes_condition.visible = true
+	button_return.visible = true
+	for note_text in active_notes_texts:
+		list_notes_condition.add_item(note_text)
+
+func _on_button_condition_pressed():
+	button_notes.visible = false
+	button_condition.visible = false
+	list_notes_condition.visible = true
+	button_return.visible = true
+	for condition_text in active_conditions_texts:
+		list_notes_condition.add_item(condition_text)
+
+func _on_button_return_pressed():
+	list_notes_condition.clear()
+	list_notes_condition.visible = false
+	button_return.visible = false
+	button_notes.visible = true
+	button_condition.visible = true
