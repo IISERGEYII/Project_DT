@@ -1,6 +1,18 @@
 {
-	"test_condition": {
-		"text_codition": "",
-		"id_notes": ["test_note"]
-	}
+	"first_condition": {
+		"text_codition": "Вы знаете как получать улики",
+		"id_notes": ["first_note"]
+	},
+	"employee_access": {
+		"text_codition": "У меня есть доступ к аккаунду администратора, теперь я могу войти в сеть агенства.",
+		"id_notes": ["login_side"]
+	},
+	"access_bank": {
+		"text_codition": "Может быть, изучения банка даст больше инфы?",
+		"id_notes": ["buying_an_insurance_company"]
+	},
+	"tip_a_AP": {
+		"text_codition": "Думаю, я смогу поймать Александра на крючёк, но для этого надо отследить его цифровой след. Думаю, его можно найти в 'App'",
+		"id_notes": ["open_person"]
+	},
 }

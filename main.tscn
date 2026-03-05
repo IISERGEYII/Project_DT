@@ -74,19 +74,21 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 834.0
-offset_top = 277.0
-offset_right = 1065.0
+offset_top = 146.0
+offset_right = 1146.0
 offset_bottom = 534.0
-auto_width = true
+allow_rmb_select = true
+max_text_lines = 100
 auto_height = true
 text_overrun_behavior = 0
+fixed_column_width = 200
 
 [node name="ButtonNote" type="Button" parent="UI_Object"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 830.0
 offset_top = 548.0
-offset_right = 1063.0
+offset_right = 1148.0
 offset_bottom = 586.0
 text = "Список найденных заметок
 "
@@ -96,7 +98,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 829.0
 offset_top = 592.0
-offset_right = 1063.0
+offset_right = 1148.0
 offset_bottom = 626.0
 text = "Список найденных улик"
 

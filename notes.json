@@ -1,10 +1,22 @@
 {
 	"first_note" : {
-		"text_note" : "Вы знаете как выглядит заметка",
+		"text_note" : "Вы знаете как выглядит заметка.",
+		"id_conditions" : ["first_condition"]
+	},
+	"buying_an_insurance_company" : {
+		"text_note": "Банк выкупил страховую компанию.",
+		"id_conditions": ["access_bank"]
+	},
+	"election_director" : {
+		"text_note" : "Александ Пупков хочет стать новым генеральным директором.",
 		"id_conditions" : []
 	},
-	"test_note" : {
-		"text_note": "НЕТ",
-		"id_conditions": ["test_condition"]
+	"login_side": {
+		"text_note" : "Я знаю адресс сайта сотрудников",
+		"id_conditions" : ["employee_access"]
+	},
+	"open_person": {
+		"text_note": "У Александра Пупкова скорее всего есть свой блог, в котором он рассказывает про себя",
+		"id_conditions": ["tip_a_AP"]
 	}
 }
