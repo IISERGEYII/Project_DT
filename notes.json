@@ -18,5 +18,13 @@
 	"open_person": {
 		"text_note": "У Александра Пупкова скорее всего есть свой блог, в котором он рассказывает про себя",
 		"id_conditions": ["tip_a_AP"]
+	},
+	"red_stoun": {
+		"text_note": "В курортной компании 'RedSoun' просело качество",
+		"id_conditions": ["tip_a_AP"]
+	},
+	"personal_email": {
+		"text_note": "Алексадр принимает предложение о сделке через личную почту",
+		"id_condition": [""]
 	}
 }
